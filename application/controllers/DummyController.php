@@ -2,11 +2,13 @@
 
 class DummyController extends BaseController
 {
-    public function indexAction() {
+    public function indexAction()
+    {
         echo "Snarglys";
-    } 
-    
-    public function displayAction($firstname, $lastname) {
+    }
+
+    public function displayAction($firstname, $lastname)
+    {
         echo $firstname . $lastname;
     }
 
@@ -14,6 +16,7 @@ class DummyController extends BaseController
     {
         echo "Before executing action";
     }
+
     public function after()
     {
         echo "After executing action";

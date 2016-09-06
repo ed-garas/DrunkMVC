@@ -29,8 +29,7 @@ $obj->trys();
 $obj->vienas()->du()->trys();*/
 
 
-
-$arr = array('vienas',2, 'trys');
+$arr = array('vienas', 2, 'trys');
 $coo = false;
 include 'template.php';
 

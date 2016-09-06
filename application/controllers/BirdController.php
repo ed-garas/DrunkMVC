@@ -2,11 +2,19 @@
 
 class BirdController extends BaseController
 {
-    public function swagAction() {
-        echo "SWAG";
+
+    public function __construct(Request $request, Response $response)
+    {
+        parent::__construct($request, $response);
     }
 
-    public function yoloAction($x, $y) {
-        echo "sum: $x + $y =".($x+$y);
+    public function swagAction()
+    {
+        echo $this->request->getUri();
+    }
+
+    public function yoloAction($x, $y)
+    {
+        echo "sum: $x + $y =" . ($x + $y);
     }
 }

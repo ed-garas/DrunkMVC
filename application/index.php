@@ -9,29 +9,23 @@ $layout->addData('meta', $meta->render());
 echo $layout->render();
  */
 
-require_once 'controllers/BaseController.php';
+require_once '../core/BaseController.php';
+require_once '../core/Router.php';
+require_once '../core/Route.php';
+require_once '../core/Dispatcher.php';
+require_once '../core/FrontController.php';
+require_once '../core/Request.php';
+require_once '../core/Response.php';
 require_once 'controllers/DummyController.php';
 require_once 'controllers/BirdController.php';
+require_once 'controllers/HomeController.php';
 require_once 'config.php';
 
-$uri = trim(strtolower($_SERVER['PATH_INFO']), '/');
+$request = new Request();
+$response = new Response();
 
-foreach ($mapping as $key=>$value){
-    if(preg_match("#^$key$#",$uri)) {
-        $uri = preg_replace("#^$key$#", $value, $uri);
-        break;
-    }
-}
-echo $uri;
-die;
-$segments = explode('/', $uri);
-$segments = array_filter($segments, function ($segment) {
-    return trim($segment);
-});
+$router = new Router($mappings);
+$dispatcher = new Dispatcher();
 
-$class = ucfirst($segments[0]) . 'Controller';
-$method = $segments[1] . 'Action';
-$params = array_slice($segments, 2);
-
-$controller = new $class();
-$controller->execute($method, $params);
+$frontController = new FrontController($router, $dispatcher);
+$frontController->execute($request, $response);
