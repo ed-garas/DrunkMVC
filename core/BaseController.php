@@ -1,4 +1,5 @@
 <?php
+defined('CORE_PATH') or exit('no access');
 
 abstract class BaseController
 {
@@ -16,6 +17,17 @@ abstract class BaseController
         $this->before();
         call_user_func_array(array($this, $action), $params);
         $this->after();
+    }
+
+    protected function view($template, array $data = array(), $return = false)
+    {
+        $view = new View($template, $data);
+        $buffer = $view->render();
+        if ($return) {
+            return $buffer;
+        }
+        $this->response->append($buffer);
+        return $this;
     }
 
     protected function before()

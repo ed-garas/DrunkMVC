@@ -1,4 +1,5 @@
 <?php
+defined('CORE_PATH')or exit('no access');
 $mappings['hello/world/(:num)'] = 'bird/swag/$1';
 $mappings['hello/world/(:num)/(:num)'] = 'bird/yolo/$1/$2';
 $mappings['product/(:num)'] = 'product/view/$1';

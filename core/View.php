@@ -1,13 +1,13 @@
 <?php
+defined('CORE_PATH') or exit('no access');
 
 class View
 {
-    const DEFAULT_TEMPLATE = 'default.php';
-
+    const VIEWS_DIR = 'views' . DIRECTORY_SEPARATOR;
     protected $_template;
     protected $_data = array();
 
-    public function __construct($template = self::DEFAULT_TEMPLATE, array $data = array())
+    public function __construct($template, array $data = array())
     {
         $this->setTemplate($template)->setData($data);
     }
@@ -20,10 +20,10 @@ class View
 
     public function setTemplate($template)
     {
-        if (!file_exists($template) || !is_readable($template)) {
-            throw new InvalidArgumentException('File not found: ' . $template);
+        $this->_template = APP_PATH . self::VIEWS_DIR . $template . '.php';
+        if (!file_exists($this->_template) || !is_readable($this->_template)) {
+            throw new InvalidArgumentException('File not found: ' . $this->_template);
         }
-        $this->_template = $template;
         return $this;
     }
 

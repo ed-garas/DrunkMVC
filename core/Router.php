@@ -1,5 +1,5 @@
 <?php
-
+defined('CORE_PATH')or exit('no access');
 class Router
 {
     private $mappings;

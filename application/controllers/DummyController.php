@@ -1,5 +1,5 @@
 <?php
-
+defined('CORE_PATH')or exit('no access');
 class DummyController extends BaseController
 {
     public function indexAction()
