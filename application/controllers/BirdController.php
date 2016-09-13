@@ -2,10 +2,11 @@
 defined('CORE_PATH')or exit('no access');
 class BirdController extends BaseController
 {
-
+    private $bird;
     public function __construct(Request $request, Response $response)
     {
         parent::__construct($request, $response);
+        $this->bird=$this->model('bird');
     }
 
     public function swagAction()
@@ -13,8 +14,8 @@ class BirdController extends BaseController
         echo $this->request->getUri();
     }
 
-    public function yoloAction($x, $y)
+    public function yoloAction($a, $b)
     {
-        echo "sum: $x + $y =" . ($x + $y);
+        echo "sum: $a + $b =" . $this->bird->sum($a, $b);
     }
 }

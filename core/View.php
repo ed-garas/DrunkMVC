@@ -22,7 +22,7 @@ class View
     {
         $this->_template = APP_PATH . self::VIEWS_DIR . $template . '.php';
         if (!file_exists($this->_template) || !is_readable($this->_template)) {
-            throw new InvalidArgumentException('File not found: ' . $this->_template);
+            throw new DrunkException('File not found: ' . $this->_template);
         }
         return $this;
     }

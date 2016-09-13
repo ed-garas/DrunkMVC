@@ -30,6 +30,12 @@ abstract class BaseController
         return $this;
     }
 
+    protected function model($model){
+        $model = ucfirst($model) . 'Model';
+
+        return new $model();
+    }
+    
     protected function before()
     {
     }
