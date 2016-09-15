@@ -13,6 +13,10 @@ $config = array(
         'username'=>'',
         'password'=>'',
         'options'=>array()
+    ),
+    'cookie'=>array(
+        'expiration'=>900,
+        'path'=>'/'
     )
 );
 
