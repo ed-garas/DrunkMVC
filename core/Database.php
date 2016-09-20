@@ -20,23 +20,35 @@ class Database extends Singleton
 
     public function query($query, $method = PDO::FETCH_OBJ)
     {
-
     }
 
-    public function select($table, $select = '*', $where = null)
+    public function select($table, $select = '*', $where = null) // Model name same as ucfirst($table)
     {
+        //created Database  insert, update, delete functions
+        //updated BirdController with examples
     }
 
-    public function insert($table, $set = null)
+    public function insert($table, $set)
     {
+        $columns = $this->columns($set);
+        $params = $this->params($set);
+        $statement = $this->dbh->prepare("INSERT INTO `$table` ($columns) VALUES ($params)");
+        return $statement->execute($set) ? $statement->rowCount() : false;
     }
 
-    public function update($table, $set = null, $where = null)
+    public function update($table, $set, $where = null) // if same column is in where and set it cause drunk error
     {
+        $values = $this->values($set);
+        $condition = $where ? $this->where($where) : 1;
+        $statement = $this->dbh->prepare("UPDATE `$table` SET $values WHERE $condition");
+        return $statement->execute(array_merge($set, $where)) ? $statement->rowCount() : false;
     }
 
-    public function delete($table, $where = null)
+    public function delete($table, $where = null) // if no $where value passed, when table will be cleaned
     {
+        $condition = $where ? $this->where($where) : 1;
+        $statement = $this->dbh->prepare("DELETE FROM `$table` WHERE $condition");
+        return $statement->execute($where) ? $statement->rowCount() : false;
     }
 
     public function beginTransaction()
@@ -54,4 +66,31 @@ class Database extends Singleton
         $this->dbh->rollBack();
     }
 
+    private function values($arr)
+    {
+        return implode(',', array_map(function ($string) {
+            return "`$string` = :$string";
+        }, array_keys($arr)));
+    }
+
+    private function where($arr)
+    {
+        return implode(' AND ', array_map(function ($string) {
+            return "`$string` = :$string";
+        }, array_keys($arr)));
+    }
+
+    private function columns($arr)
+    {
+        return implode(',', array_map(function ($string) {
+            return "`$string`";
+        }, array_keys($arr)));
+    }
+
+    private function params($arr)
+    {
+        return implode(',', array_map(function ($string) {
+            return ":$string";
+        }, array_keys($arr)));
+    }
 }

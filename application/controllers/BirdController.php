@@ -28,4 +28,28 @@ class BirdController extends BaseController
         echo $count;
 
     }
+
+    public function insertAction()
+    {
+        $params = array("username" => "Useris", "password" => "aaa", "email" => "ada@gala.dev");
+        $result = Database::getInstance()->insert("demo_app", $params);
+        echo $result === false ? "Insert failed" : "Inserted $result records";
+    }
+
+    public function deleteAction($id)
+    {
+        $where = array("id" => $id);
+        $result = Database::getInstance()->delete("demo_app", $where);
+        echo $result === false ? "Deletion failed" : "Deleted $result records";
+    }
+
+    public function updateAction($id, $password)
+    {
+        $where = array("id" => $id);
+        $params = array("password" => $password);
+        $result = Database::getInstance()->update("demo_app", $params, $where);
+        echo $result === false ? "Update failed" : "Updated $result records";
+    }
+
+
 }
