@@ -3,7 +3,9 @@ defined('CORE_PATH') or exit('no access');
 
 class Cookie extends Singleton
 {
-    private $salt = 'ghjklfgkjhfshjfgvcdfghjhgfdfg258f5d6fgh5j8hg5fdfg5h8g5f2g5h87g5f2345sscxaaxxsa';
+    protected static $instance = null;
+
+    private $salt = 'GpTKm2J@Gjn#wLzh';
     private $path = '/';
     private $domain = null;
     private $secure = false;

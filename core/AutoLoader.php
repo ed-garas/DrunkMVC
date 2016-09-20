@@ -1,7 +1,7 @@
 <?php
 defined('CORE_PATH') or exit('no access');
 
-class AutoLoader 
+class AutoLoader
 {
     public function __construct()
     {

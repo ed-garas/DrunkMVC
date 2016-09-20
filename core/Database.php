@@ -3,6 +3,8 @@ defined('CORE_PATH') or exit('no access');
 
 class Database extends Singleton
 {
+    protected static $instance = null;
+
     private $dbh;
 
     protected function __construct()

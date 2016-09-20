@@ -3,6 +3,8 @@ defined('CORE_PATH') or exit('no access');
 
 class Config extends Singleton
 {
+    protected static $instance = null;
+
     private $data = array();
 
     protected function __construct()

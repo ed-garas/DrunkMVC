@@ -13,7 +13,7 @@ abstract class Singleton
         return static::$instance;
     }
 
-    protected function __construct()
+    private function __construct()
     {
     }
 
