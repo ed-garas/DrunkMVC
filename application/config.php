@@ -17,9 +17,15 @@ $config = array(
     'cookie'=>array(
         'expiration'=>900,
         'path'=>'/'
+    ),
+    'validator'=>array(
+        'form/send'=>array(
+            'name'=>['required'],
+            'date'=> ['required', 'date'],
+            'email'=> ['email']
+        )
     )
 );
-
 
 /*$mappings['[^/]+(/[^/]+)*'] = 'catalog/view/$0';*/
 /*$mappings[':any(/:any)*'] = 'catalog/view/$0';*/

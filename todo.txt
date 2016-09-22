@@ -1,0 +1,6 @@
+1. database query, select
+2. url helper
+3. form validator
+4. RestController and ajax support
+5. seperate helper libraries to seperate folders
+6. implement form validation in validate()
