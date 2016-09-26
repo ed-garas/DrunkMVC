@@ -51,5 +51,4 @@ class BirdController extends BaseController
         echo $result === false ? "Update failed" : "Updated $result records";
     }
 
-
 }
