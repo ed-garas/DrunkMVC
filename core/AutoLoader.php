@@ -6,27 +6,40 @@ class AutoLoader
     public function __construct()
     {
         spl_autoload_register(array($this, 'load'));
+        spl_autoload_register(array($this, 'lib'));
+        spl_autoload_register(array($this, 'helper'));
         spl_autoload_register(array($this, 'model'));
         spl_autoload_register(array($this, 'controller'));
     }
 
-    public function load($class, $path = null)
+    public function load($class, $path = null, $isCore = true)
     {
-        $path = empty($path) ? CORE_PATH : APP_PATH . $path . DIRECTORY_SEPARATOR;
-        $filePath = $path . $class . '.php';
+        $filePath = $isCore ? CORE_PATH : APP_PATH;
+        $filePath .= empty($path) ? '' : $path . DIRECTORY_SEPARATOR;
+        $filePath .= $class . '.php';
 
         if (file_exists($filePath) && is_readable($filePath)) {
             require_once $filePath;
         }
     }
 
+    public function lib($class)
+    {
+        $this->load($class, 'libs');
+    }
+
+    public function helper($class)
+    {
+        $this->load($class, 'helpers');
+    }
+
     public function model($class)
     {
-        $this->load($class, 'models');
+        $this->load($class, 'models', false);
     }
 
     public function controller($class)
     {
-        $this->load($class, 'controllers');
+        $this->load($class, 'controllers', false);
     }
 }

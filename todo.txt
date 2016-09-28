@@ -1,6 +1,7 @@
-1. database query, select
-2. url helper
+1. database query
+2.1 create entities folder in check autoloader
+2.2 autoloader searching libs and helpers from application folder first
+
 3. form validator
 4. RestController and ajax support
-5. seperate helper libraries to seperate folders
 6. implement form validation in validate()
