@@ -13,6 +13,11 @@ class BirdController extends BaseController
         $this->db = Database::getInstance();
     }
 
+    public function indexAction()
+    {
+        echo 'bird';
+    }
+
     public function swagAction()
     {
         echo $this->request->getUri();
@@ -34,30 +39,30 @@ class BirdController extends BaseController
 
     public function insertAction()
     {
-        $params = array("laukelis2" => "Useris");
-        $result = $this->db->insert("lentele1", $params);
+        $params = array("title" => "pavadinimas2");
+        $result = $this->db->insert("book", $params);
         echo $result === false ? "Insert failed" : "Inserted $result records";
     }
 
     public function deleteAction($id)
     {
         $where = array("id" => $id);
-        $result = $this->db->delete("lentele1", $where);
+        $result = $this->db->delete("book", $where);
         echo $result === false ? "Deletion failed" : "Deleted $result records";
     }
 
-    public function updateAction($id, $password)
+    public function updateAction($id, $title)
     {
         $where = array("id" => $id);
-        $params = array("laukelis2" => $password);
-        $result = $this->db->update("lentele1", $params, $where);
+        $params = array("title" => $title);
+        $result = $this->db->update("book", $params, $where);
         echo $result === false ? "Update failed" : "Updated $result records";
     }
 
     public function selectAction($id = null)
     {
         $where = !empty($id) ? array('id' => $id) : null;
-        $result = $this->db->select("lentele1", $where);
+        $result = $this->db->select("book", $where);
         if ($result === false) {
             echo 'select failed';
         } else {
@@ -65,4 +70,19 @@ class BirdController extends BaseController
         }
     }
 
+    public function queryAction()
+    {
+        $result = $this->db->query("INSERT INTO `book` (`title`) VALUES ('gad');");
+        if ($result === false) {
+            echo 'query failed';
+        } else {
+            var_dump($result);
+        }
+    }
+
+
+    public function helpAction()
+    {
+        TestHelper::test();
+    }
 }

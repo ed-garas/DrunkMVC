@@ -20,6 +20,14 @@ class Database extends Singleton
 
     public function query($query, $method = PDO::FETCH_OBJ)
     {
+        $action = explode(' ',trim($query));
+        if($action[0] === 'SELECT'){
+            $statement = $this->dbh->prepare($query);
+            return $statement->execute() ? $statement->fetchAll($method) : false;
+        }else {
+            $statement = $this->dbh->prepare($query);
+            return $statement->execute() ? $statement->rowCount() : false;
+        }
     }
 
     public function select($table, $where = null) // Model name same as ucfirst($table)

@@ -10,16 +10,18 @@ class AutoLoader
         spl_autoload_register(array($this, 'helper'));
         spl_autoload_register(array($this, 'model'));
         spl_autoload_register(array($this, 'controller'));
+        spl_autoload_register(array($this, 'entitie'));
     }
 
-    public function load($class, $path = null, $isCore = true)
+    public function load($class, $path = null)
     {
-        $filePath = $isCore ? CORE_PATH : APP_PATH;
-        $filePath .= empty($path) ? '' : $path . DIRECTORY_SEPARATOR;
-        $filePath .= $class . '.php';
+        $pathApp = APP_PATH . $path . DIRECTORY_SEPARATOR . $class . '.php';
+        $pathCore = CORE_PATH . $path . DIRECTORY_SEPARATOR . $class . '.php';
 
-        if (file_exists($filePath) && is_readable($filePath)) {
-            require_once $filePath;
+        if (file_exists($pathApp) && is_readable($pathApp)) {
+            require_once $pathApp;
+        }elseif (file_exists($pathCore) && is_readable($pathCore)){
+            require_once $pathCore;
         }
     }
 
@@ -35,11 +37,16 @@ class AutoLoader
 
     public function model($class)
     {
-        $this->load($class, 'models', false);
+        $this->load($class, 'models');
     }
 
     public function controller($class)
     {
-        $this->load($class, 'controllers', false);
+        $this->load($class, 'controllers');
+    }
+
+    public function entitie($class)
+    {
+        $this->load($class, 'entities');
     }
 }

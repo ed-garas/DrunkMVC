@@ -9,8 +9,8 @@ $config = array(
         'samsung/(:any)/bird'=>'catalog/view/$0'
     ),
     'database'=>array(
-        'dsn'=>'mysql:host=localhost;dbname=wordpress;charset=utf8',
-        'username'=>'',
+        'dsn'=>'mysql:host=localhost;dbname=testas;charset=utf8',
+        'username'=>'root',
         'password'=>'',
         'options'=>array()
     ),
