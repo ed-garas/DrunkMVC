@@ -18,15 +18,17 @@ class Database extends Singleton
         }
     }
 
-    public function query($query, $method = PDO::FETCH_OBJ)
+    public function query($query, $params = array(), $method = PDO::FETCH_OBJ)
     {
-        $action = explode(' ',trim($query));
-        if($action[0] === 'SELECT'){
-            $statement = $this->dbh->prepare($query);
-            return $statement->execute() ? $statement->fetchAll($method) : false;
-        }else {
-            $statement = $this->dbh->prepare($query);
-            return $statement->execute() ? $statement->rowCount() : false;
+        $statement = $this->dbh->prepare($query);
+
+        if (!$statement->execute($params)) {
+            return false;
+        }
+        if (preg_match('/^\s*select/i', $query)) {
+            return $statement->fetchAll($method);
+        } else {
+            return $statement->rowCount();
         }
     }
 

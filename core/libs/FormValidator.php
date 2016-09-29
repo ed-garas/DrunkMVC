@@ -20,6 +20,14 @@ class FormValidator extends Singleton
         if (!is_array($this->rules[$rule])) {
             return true;
         }
+
+/*        foreach ($this->rules[$rule] as $rule){
+
+        }*/
         return false;
+    }
+
+    private function check($value, $rule){
+        return true;
     }
 }

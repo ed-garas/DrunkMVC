@@ -70,9 +70,10 @@ class BirdController extends BaseController
         }
     }
 
-    public function queryAction()
+    public function queryAction($title)
     {
-        $result = $this->db->query("INSERT INTO `book` (`title`) VALUES ('gad');");
+        $params = array('title' => $title);
+        $result = $this->db->query("INSERT INTO `book` (`title`) VALUES (:title)", $params);
         if ($result === false) {
             echo 'query failed';
         } else {
