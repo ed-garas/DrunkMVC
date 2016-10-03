@@ -39,30 +39,33 @@ class BirdController extends BaseController
 
     public function insertAction()
     {
-        $params = array("title" => "pavadinimas2");
-        $result = $this->db->insert("book", $params);
+        $params = array("name" => "Monikutės naktys",
+            "brewery" => "Nieks nežino",
+            "abv" => "10",
+            "description" => "Ne alus, bet sueis");
+        $result = $this->db->insert("beers", $params);
         echo $result === false ? "Insert failed" : "Inserted $result records";
-    }
+            }
 
     public function deleteAction($id)
     {
         $where = array("id" => $id);
-        $result = $this->db->delete("book", $where);
+        $result = $this->db->delete("beers", $where);
         echo $result === false ? "Deletion failed" : "Deleted $result records";
     }
 
-    public function updateAction($id, $title)
+    public function updateAction($id, $name)
     {
         $where = array("id" => $id);
-        $params = array("title" => $title);
-        $result = $this->db->update("book", $params, $where);
+        $params = array("name" => $name);
+        $result = $this->db->update("beers", $params, $where);
         echo $result === false ? "Update failed" : "Updated $result records";
     }
 
     public function selectAction($id = null)
     {
         $where = !empty($id) ? array('id' => $id) : null;
-        $result = $this->db->select("book", $where);
+        $result = $this->db->select("beers", $where);
         if ($result === false) {
             echo 'select failed';
         } else {
@@ -70,10 +73,13 @@ class BirdController extends BaseController
         }
     }
 
-    public function queryAction($title)
+    public function queryAction($name, $brewery, $abv, $description)
     {
-        $params = array('title' => $title);
-        $result = $this->db->query("INSERT INTO `book` (`title`) VALUES (:title)", $params);
+        $params = array('name' => $name,
+            "brewery" => $brewery,
+            "abv" => $abv,
+            "description" => $description);
+        $result = $this->db->query("INSERT INTO `beers` (`name`, `brewery`, `abv`, `description`) VALUES (:name, :brewery, :abv, :description)", $params);
         if ($result === false) {
             echo 'query failed';
         } else {

@@ -9,9 +9,9 @@ $config = array(
         'samsung/(:any)/bird'=>'catalog/view/$0'
     ),
     'database'=>array(
-        'dsn'=>'mysql:host=localhost;dbname=testas;charset=utf8',
+        'dsn'=>'mysql:host=localhost;dbname=drunkdb;charset=utf8',
         'username'=>'root',
-        'password'=>'',
+        'password'=>'npass33N',
         'options'=>array()
     ),
     'cookie'=>array(
