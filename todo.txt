@@ -1,7 +1,5 @@
-3. form validator
-4. RestController and ajax support
-6. implement form validation in validate()
 
+4. RestController and ajax support
 7. export sql file with database and table create scripts (kazimieras)
 8. email helper : send htm/txt email, utf8, attąchments (pranas)
 9. file helper : save file to folder, if file exists, file delete,

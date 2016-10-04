@@ -5,29 +5,64 @@ class FormValidator extends Singleton
 {
     protected static $instance = null;
 
-    private $rules = array();
+    private $collections = array();
 
     protected function __construct()
     {
-        $this->rules = Config::getInstance()->validator;
-        if (!is_array($this->rules)) {
-            $this->rules = array();
+        $this->collections = Config::getInstance()->validator;
+        if (!is_array($this->collections)) {
+            $this->collections = array();
         }
     }
 
-    public function validate($form, $rule)
+    public function validate($data, $collection, &$result)
     {
-        if (!is_array($this->rules[$rule])) {
+        $fields = $this->collections[$collection];
+        if (!is_array($fields)) {
             return true;
         }
-
-/*        foreach ($this->rules[$rule] as $rule){
-
-        }*/
-        return false;
+        $isValid = true;
+        $result = array_merge(
+            array_fill_keys(array_keys($data), true),
+            array_fill_keys(array_keys($fields), true)
+        );
+        foreach ($fields as $field => $rules) {
+            $result[$field] = $this->isValid($data[$field], $rules);
+            $isValid = $result[$field] && $isValid;
+        }
+        return $isValid;
     }
 
-    private function check($value, $rule){
+    private function isValid($value, $rules)
+    {
+        foreach ($rules as $rule) {
+            $method = 'isValid' . ucfirst($rule);
+            if (!$this->$method($value)) {
+                return false;
+            }
+        }
         return true;
     }
+
+    private function isValidRequired($value)
+    {
+        return !empty($value) && trim($value);
+    }
+
+    private function isValidEmail($value)
+    {
+        if (empty($value)) {
+            return true;
+        }
+        return filter_var($value, FILTER_SANITIZE_EMAIL) !== false;
+    }
+
+    private function isValidDate($value, $format = 'Y-m-d')
+    {
+        if (empty($value)) {
+            return true;
+        }
+        return $value === date($format, strtotime($value));
+    }
+
 }

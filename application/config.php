@@ -11,7 +11,7 @@ $config = array(
     'database'=>array(
         'dsn'=>'mysql:host=localhost;dbname=drunkdb;charset=utf8',
         'username'=>'root',
-        'password'=>'npass33N',
+        'password'=>'',
         'options'=>array()
     ),
     'cookie'=>array(
