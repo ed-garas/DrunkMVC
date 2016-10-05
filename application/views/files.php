@@ -5,8 +5,8 @@
     <title></title>
 </head>
 <body>
-<form action="//drunk.dev/media/test" method="post" enctype="multipart/form-data">
-    <input type="file" name="media">
+<form action="//drunk.dev/media/file" method="post" enctype="multipart/form-data">
+    <input type="file" name="files[]" multiple="multiple">
     <div>
         <input type="submit" value="Siųsti">
     </div>
