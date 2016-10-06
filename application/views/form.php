@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-<form action="//localhost/drunkmvc/form/send" method="post">
+<form action="<?php echo UrlHelper::getUrl('/form/send') ?>" method="post">
     <div>
         <label for="name">Vardas</label><br>
         <input id="name" type="text" name="name" placeholder="Tavo Vardas">
