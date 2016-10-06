@@ -6,7 +6,7 @@ class BirdController extends BaseController
     private $bird;
     private $db;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct(Request $request, BaseResponse $response)
     {
         parent::__construct($request, $response);
         $this->bird = $this->model('bird');

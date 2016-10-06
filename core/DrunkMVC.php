@@ -4,7 +4,7 @@ require_once CORE_PATH . 'AutoLoader.php';
 new AutoLoader();
 
 $request = new Request();
-$response = new Response();
+$response = ResponseFactory::create($request);
 
 $router = new Router(Config::getInstance()->mappings);
 $dispatcher = new Dispatcher();

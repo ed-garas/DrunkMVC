@@ -11,7 +11,7 @@ class FrontController
         $this->dispatcher = $dispatcher;
     }
 
-    public function execute(Request $request, Response $response)
+    public function execute(Request $request, BaseResponse $response)
     {
         $route = $this->router->route($request);
         $this->dispatcher->dispatch($route, $request, $response);

@@ -1,5 +1,5 @@
-
-4. RestController and ajax support
+1. metodu properciams nurodyti tipus
+2. surasti visus todo ir visus pataisyt
 7. export sql file with database and table create scripts (kazimieras)
 8. email helper : send htm/txt email, utf8, attąchments (pranas)
 9. file helper : save file to folder, if file exists, file delete,

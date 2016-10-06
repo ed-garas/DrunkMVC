@@ -6,7 +6,7 @@ abstract class BaseController
     protected $request;
     protected $response;
 
-    public function __construct(Request $request, Response $response)
+    public function __construct(Request $request, BaseResponse $response)
     {
         $this->request = $request;
         $this->response = $response;
@@ -26,7 +26,7 @@ abstract class BaseController
         if ($return) {
             return $buffer;
         }
-        $this->response->append($buffer);
+        $this->response->setOutput($buffer);
         return $this;
     }
 
