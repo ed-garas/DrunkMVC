@@ -2,11 +2,12 @@
 
 defined('CORE_PATH') or exit('no access');
 
-class Email
+class Message
 {
     private $emailSendTo;
     private $subject;
     private $message;
+    private $attachment;
 
     public function __construct($emailSendTo,$subject,$message){
         $this->setEmailSendTo($emailSendTo);
@@ -44,20 +45,14 @@ class Email
         $this->message = $message;
     }
 
-
-    public function isValid()
+    public function getAttachment()
     {
-        $hasValidEmailSendTo = (($this->getEmailSendTo() != null) && (!empty($this->getEmailSendTo())));
-        $hasValidSubject = (($this->getMessage() != null) && (!empty($this->getMessage())));
-        $hasValidMessage = (($this->getMessage() != null) && (!empty($this->getMessage())));
-        return $hasValidEmailSendTo && $hasValidSubject && $hasValidMessage;
+        return $this->attachment;
     }
 
-    public function sendIfValid()
+    public function setAttachment($attachment)
     {
-        if ($this->isValid()) {
-            return mail($this->getEmailSendTo(), $this->getSubject(), $this->getMessage());
-        }
-        return false;
+        $this->attachment = $attachment;
     }
+
 }
