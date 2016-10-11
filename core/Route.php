@@ -25,7 +25,7 @@ class Route
         return new Route($controller, $action, $params);
     }
 
-    public function getController(Request $request, Response $response)
+    public function getController(Request $request, BaseResponse $response)
     {
         return new $this->controller($request, $response);
     }

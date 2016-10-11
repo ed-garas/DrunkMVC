@@ -2,7 +2,7 @@
 defined('CORE_PATH')or exit('no access');
 class Dispatcher
 {
-    public function dispatch(Route $route, Request $request, Response $response)
+    public function dispatch(Route $route, Request $request, BaseResponse $response)
     {
         try {
             $controller = $route->getController($request, $response);

@@ -44,7 +44,7 @@ class Cookie extends Singleton
         }
 
         if ($expiration !== 0) {
-            $expiration += time();
+            $expiration += time(); //todo get client time GMT not server
         }
         $value = $this->encrypt($key, $value) . '|' . $value;
         return setcookie($key, $value, $expiration, $this->path, $this->domain, $this->secure, $this->httpOnly);

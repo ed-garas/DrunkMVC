@@ -12,4 +12,8 @@ class HomeController extends BaseController
         $this->view('layout', $data);
     }
 
+    public function helloAction(){
+        $this->response->setOutput('not found');
+    }
+
 }

@@ -15,7 +15,7 @@ if (($tmp = realpath($applicationPath)) !== false) {
     $applicationPath = $tmp . DIRECTORY_SEPARATOR;
 }
 if (!is_dir($applicationPath)) {
-    exit('your core path conf. is invalid');
+    exit('your app path conf. is invalid');
 }
 define('APP_PATH', $applicationPath);
 

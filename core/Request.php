@@ -16,4 +16,13 @@ class Request
         return $this->uri;
     }
 
+    public function isAjax(){
+        return !empty($_SERVER['HTTP_X_REQUESTED_WITH'])
+            && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+    }
+
+    public function post(){
+        return filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    }
+
 }
