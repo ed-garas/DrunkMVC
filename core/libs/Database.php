@@ -18,6 +18,11 @@ class Database extends Singleton
         }
     }
 
+    public function insertId()
+    {
+        return $this->dbh->lastInsertId();
+    }
+
     public function query($query, $params = array(), $method = PDO::FETCH_OBJ)
     {
         $statement = $this->dbh->prepare($query);
