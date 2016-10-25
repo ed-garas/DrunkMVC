@@ -7,7 +7,9 @@ $config = array(
         'hello/world/(:num)' => 'bird/swag/$1',
         'hello/world/(:num)/(:num)' => 'bird/yolo/$1/$2',
         'product/(:num)' => 'product/view/$1',
-        'samsung/(:any)/bird' => 'catalog/view/$0'
+        'samsung/(:any)/bird' => 'catalog/view/$0',
+        'register' => 'welcome/register',
+        'login' => 'welcome/login'
     ),
     'database' => array(
         'dsn' => 'mysql:host=localhost;dbname=drunkdb;charset=utf8',
@@ -27,6 +29,11 @@ $config = array(
         ),
         'todo/create' => array(
             'task' => ['required']
+        ),
+        'registration' => array(
+            'name' => ['required'],
+            'email' => ['required', 'email'],
+            'password' => ['required']
         )
     )
 );

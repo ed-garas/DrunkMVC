@@ -54,7 +54,7 @@ class FormValidator extends Singleton
         if (empty($value)) {
             return true;
         }
-        return filter_var($value, FILTER_SANITIZE_EMAIL) !== false;
+        return filter_var($value, FILTER_VALIDATE_EMAIL) !== false;
     }
 
     private function isValidDate($value, $format = 'Y-m-d')

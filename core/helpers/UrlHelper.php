@@ -12,4 +12,9 @@ class UrlHelper
         return self::getBaseUrl() .'/'. trim($uri, '/');
     }
 
+    public static function redirect($uri) {
+        header("Location: " . self::getUrl($uri));
+        die();
+    }
+
 }
