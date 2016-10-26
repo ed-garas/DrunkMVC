@@ -8,7 +8,7 @@ class Dispatcher
             $controller = $route->getController($request, $response);
             $controller->execute($route->getAction(), $route->getParams());
         }catch (\Exception $e){
-            $response->setOutput('404');
+            $response->append('404');//TODO@Kazimieras:create method setOutput
         }
     }
 }

@@ -2,13 +2,7 @@
 defined('CORE_PATH') or exit('no access');
 
 $config = array(
-    /*
-    Set URL for application
-    */
     'baseUrl' => 'http://localhost/drunkmvc',
-    /*
-    URL mapping
-    */
     'mappings' => array(
         'hello/world/(:num)' => 'bird/swag/$1',
         'hello/world/(:num)/(:num)' => 'bird/yolo/$1/$2',
@@ -17,31 +11,33 @@ $config = array(
         'register' => 'welcome/register',
         'login' => 'welcome/login'
     ),
-    /*
-    Database connections
-    */
     'database' => array(
         'dsn' => 'mysql:host=localhost;dbname=drunkdb;charset=utf8',
         'username' => 'root',
         'password' => '',
         'options' => array()
     ),
-    /*
-    Cookie settings
-    */
     'cookie' => array(
         'expiration' => 900,
         'path' => '/'
     ),
-    /*
-    Data validations
-    */
     'validator' => array(
-        'myCustomValidationName' => array(
-            /*'name' => ['required'],
+        'form/send' => array(
+            'name' => ['required'],
             'date' => ['required', 'date'],
-            'email' => ['email']*/
+            'email' => ['email']
+        ),
+        'todo/create' => array(
+            'task' => ['required']
+        ),
+        'registration' => array(
+            'name' => ['required'],
+            'email' => ['required', 'email'],
+            'password' => ['required']
         )
     )
 );
+
+/*$mappings['[^/]+(/[^/]+)*'] = 'catalog/view/$0';*/
+/*$mappings[':any(/:any)*'] = 'catalog/view/$0';*/
 

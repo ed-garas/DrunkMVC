@@ -4,16 +4,10 @@ class HomeController extends BaseController
 {
     public function indexAction()
     {
-        $metaData = array('title'=>'taitlas');
         $data = array(
-            'hello'=>'Hello suckers',
-            'meta'=>$this->view('home/meta', $metaData , true)
+            'hello'=>'Drunk MVC by drunk people'
         );
-        $this->view('layout', $data);
-    }
-
-    public function helloAction(){
-        $this->response->setOutput('not found');
+        $this->view('index', $data);
     }
 
 }

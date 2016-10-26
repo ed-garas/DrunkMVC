@@ -10,7 +10,7 @@ class Cookie extends Singleton
     private $domain = null;
     private $secure = false;
     private $httpOnly = false;
-    private $expiration = 86400;
+    private $expiration = 3600;
 
     protected function __construct()
     {
@@ -53,7 +53,7 @@ class Cookie extends Singleton
     public function delete($key)
     {
         unset($_COOKIE[$key]);
-        $this->set($key, null, -$this->expiration);
+        $this->set($key, null, -3600); //todo edgarui padaryt
     }
 
     private function encrypt($key, $value)
