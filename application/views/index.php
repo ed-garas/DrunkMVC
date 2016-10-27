@@ -10,7 +10,6 @@
     <title>DrunkMVC</title>
     <style>
         .hello{
-            font-family: 'Ubuntu', sans-serif;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -19,12 +18,31 @@
             -ms-transform:  translate(-50%, -50%);
             -o-transform:  translate(-50%, -50%);
             transform:  translate(-50%, -50%);
+            text-align: center;
+        }
+        .hello p{
+            font-family: 'Ubuntu', sans-serif;
             font-size: 40px;
             font-weight: 300;
+        }
+        .docs {
+            position: absolute;
+            bottom: 50px;
+            right: 50px;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 20px;
+            font-weight: 300;
+            color: #333;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-<div class="hello"><?php echo $hello; ?></div>
+<div class="hello">
+<p><?php echo $hello; ?></p>
+<img src="<?php echo UrlHelper::getUrl('/asset/img/drunk-icon.png'); ?>">
+</div>
+
+<a class="docs" href="<?php echo UrlHelper::getUrl('home/docs'); ?>">Documentations</a>
 </body>
 </html>

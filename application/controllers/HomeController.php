@@ -10,4 +10,9 @@ class HomeController extends BaseController
         $this->view('index', $data);
     }
 
+    public function DocsAction()
+    {
+        $this->view('documentation');
+    }
+
 }
