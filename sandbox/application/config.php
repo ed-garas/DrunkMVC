@@ -2,7 +2,7 @@
 defined('CORE_PATH') or exit('no access');
 
 $config = array(
-    'baseUrl' => 'http://localhost/drunkmvc',
+    'baseUrl' => 'http://localhost/drunkmvc/sandbox/',
     'mappings' => array(
         'hello/world/(:num)' => 'bird/swag/$1',
         'hello/world/(:num)/(:num)' => 'bird/yolo/$1/$2',

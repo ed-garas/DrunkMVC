@@ -1,6 +1,6 @@
 <?php
 
-$corePath = 'core';
+$corePath = '../core';
 $applicationPath = 'application';
 
 if (($tmp = realpath($corePath)) !== false) {
