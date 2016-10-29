@@ -73,7 +73,7 @@ class UploadHelper
     }
 
     static public function getMedia($directory, $fileName){
-        $file = UrlHelper::getBaseUrl().$directory.DIRECTORY_SEPARATOR.$fileName;
+        $file = UrlHelper::getBaseUrl().DIRECTORY_SEPARATOR.$directory.DIRECTORY_SEPARATOR.$fileName;
         return $file;
     }
 

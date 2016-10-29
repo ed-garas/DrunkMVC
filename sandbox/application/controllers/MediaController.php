@@ -25,7 +25,7 @@ class MediaController extends BaseController
     }
 
     public function fotoAction(){
-        echo '<img src="'.UploadHelper::getMedia('media', '14199732_1777324929214563_6809088329830563210_n.jpg').'" />';
+        echo '<img src="'.UploadHelper::getMedia('media', 'L 61139848299.vol.jpg').'" />';
     }
 
 }
